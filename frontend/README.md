@@ -49,3 +49,65 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+
+* Generate application route
+
+```html
+ember g route application
+```
+```js
+# frontend/app/routes/application.js
+
+import Route from '@ember/routing/route';
+
+export default Route.extend({
+  model(){
+    return this.store.findAll('user');
+  }
+});
+```
+* Generate User model
+
+```html
+# terminal
+ember g model user
+
+installing model
+  create app/models/user.js
+installing model-test
+  create tests/unit/models/user-test.js
+```
+
+```js
+# modify app/models/user.js
+import DS from 'ember-data';
+
+export default DS.Model.extend({
+  first_name: DS.attr('string'),
+  last_name:  DS.attr('string'),
+  email:      DS.attr('string')
+});
+```
+
+```html
+# modify app/template/application.hbs
+
+```
+
+* Make sure to the data from Rails side needs to be JSON API format in order to shows up right on Ember side
+
+```html
+# make sure the active model serializers set to use jason_api
+```
+
+* Generate adapters
+
+```html
+ember g adapter application
+
+➜  frontend git:(master) ✗ ember g adapter application
+installing adapter
+  create app/adapters/application.js
+installing adapter-test
+  create tests/unit/adapters/application-test.js
+```
