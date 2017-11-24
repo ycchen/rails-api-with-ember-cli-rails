@@ -129,3 +129,120 @@ end
 ActiveModelSerializers.config.adapter = :json_api
 
 ```
+
+* Generate scaffold book model
+```ruby
+#terminal
+
+rails g scaffold book title 'price:decimal{5,2}' author:references publisher:references{polymorphic}
+
+rails g scaffold author name
+
+rails g scaffold publishing_house name 'discount:decimal{2,2}'
+
+rake db:migrate
+
+# populate data for those models
+
+#db/seeds.rb
+```
+
+* Generate models with Ember CLI
+
+```ruby
+ember generate resource books title:string price:number author:belongs-to publisher:belongs-to
+
+# ➜  frontend git:(master) ✗ ember g resource books title:string price:number author:belongs-to publisher:belongs-to
+# installing model
+#   create app/models/book.js
+# installing model-test
+#   create tests/unit/models/book-test.js
+# installing route
+#   create app/routes/books.js
+#   create app/templates/books.hbs
+# updating router
+#   add route books
+# installing route-test
+#   create tests/unit/routes/books-test.js
+
+ember g resource authors name:string books:has-many
+
+# ➜  frontend git:(master) ✗ ember g resource authors name:string books:has-many
+# installing model
+#   create app/models/author.js
+# installing model-test
+#   create tests/unit/models/author-test.js
+# installing route
+#   create app/routes/authors.js
+#   create app/templates/authors.hbs
+# updating router
+#   add route authors
+# installing route-test
+#   create tests/unit/routes/authors-test.js
+
+ember g resource publishing-houses name:string discount:number books:has-many
+
+# ➜  frontend git:(master) ✗ ember g resource publishing-houses name:string discount:number books:has-many
+# installing model
+#   create app/models/publishing-house.js
+# installing model-test
+#   create tests/unit/models/publishing-house-test.js
+# installing route
+#   create app/routes/publishing-houses.js
+#   create app/templates/publishing-houses.hbs
+# updating router
+#   add route publishing-houses
+# installing route-test
+#   create tests/unit/routes/publishing-houses-test.js
+```
+
+* Generate Publisher model as polymorphic relationship in Emeber
+
+```ruby
+ember g model publisher
+
+# ➜  frontend git:(master) ✗ ember g model publisher
+# installing model
+#   create app/models/publisher.js
+# installing model-test
+#   create tests/unit/models/publisher-test.js
+```
+
+* Generate ember component
+
+```Ruby
+ember g component book-cover
+
+➜  frontend git:(master) ✗ ember g component book-cover
+installing component
+? Overwrite app/templates/components/book-cover.hbs? Yes, overwrite
+  create app/components/book-cover.js
+  overwrite app/templates/components/book-cover.hbs
+installing component-test
+  create tests/integration/components/book-cover-test.js
+```
+
+* Install ember-modal-dialog
+```ruby
+ember install ember-modal-dialog
+ember install ember-cli-sass
+
+# app.scss
+@import "ember-modal-dialog/ember-modal-structure";
+@import "ember-modal-dialog/ember-modal-appearance";
+
+
+ember install ember-route-action-helper
+```
+
+* Generate ember controller for books
+
+```ruby
+ember g controller books
+
+# ➜  frontend git:(master) ✗ ember g controller books
+# installing controller
+#   create app/controllers/books.js
+# installing controller-test
+#   create tests/unit/controllers/books-test.js
+```

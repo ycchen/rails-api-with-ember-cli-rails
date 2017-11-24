@@ -1,10 +1,9 @@
-{{outlet}}
-<div class="">
-  {{#each model as |user|}}
-    <div class="">
-        {{user.last_name}}, {{user.first_name}}
-        <br/>
-        {{user.email}}
-    </div>
-  {{/each}}
+
+<h2 id="title">
+  <!-- {{link-to "Our Awesome Bookstore" 'books'}} -->
+  {{#link-to 'books'}}Our Awesome Bookstroe{{/link-to}}
+</h2>
+
+<div class="{{if blur 'blur-background'}}">
+  {{outlet}}
 </div>

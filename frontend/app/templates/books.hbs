@@ -1,0 +1,13 @@
+{{outlet}}
+books: {{model.length}}
+<ul>
+  {{#each model as |book|}}
+    <div>
+      {{book-cover book=book blurBackground=(route-action "blurBackground")}}
+    </div>
+  {{/each}}
+</ul>
+
+{{#if showAll}}
+  <button {{action 'showAll'}}>Show All</button>
+{{/if}}
